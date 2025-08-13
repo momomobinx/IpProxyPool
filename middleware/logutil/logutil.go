@@ -4,11 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
-	"github.com/rifflock/lfshook"
-	"github.com/sirupsen/logrus"
-	"github.com/wuchunfu/IpProxyPool/middleware/config"
-	"github.com/wuchunfu/IpProxyPool/util/fileutil"
 	"io"
 	"os"
 	"path"
@@ -17,6 +12,12 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
+	"github.com/rifflock/lfshook"
+	"github.com/sirupsen/logrus"
+	"github.com/wuchunfu/IpProxyPool/middleware/config"
+	"github.com/wuchunfu/IpProxyPool/util/fileutil"
 )
 
 func InitLog(setting *config.Log) {
@@ -134,10 +135,10 @@ func NewLfsHook(filePath string) logrus.Hook {
 	return lfsHook
 }
 
-//日志自定义格式
+// 日志自定义格式
 type LogFormatter struct{}
 
-//格式详情
+// 格式详情
 func (logFormat *LogFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 	timestamp := time.Now().Format("2006-01-02 15:04:05")
 	var file string

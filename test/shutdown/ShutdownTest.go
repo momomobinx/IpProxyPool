@@ -3,14 +3,15 @@ package main
 import (
 	"context"
 	"fmt"
-	logger "github.com/sirupsen/logrus"
-	"github.com/wuchunfu/IpProxyPool/util/iputil"
 	"net/http"
 	"os"
 	"os/signal"
 	"sync"
 	"syscall"
 	"time"
+
+	logger "github.com/sirupsen/logrus"
+	"github.com/wuchunfu/IpProxyPool/util/iputil"
 )
 
 func main() {

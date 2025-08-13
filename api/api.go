@@ -4,12 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"net/http"
+	"time"
+
 	logger "github.com/sirupsen/logrus"
 	"github.com/wuchunfu/IpProxyPool/middleware/config"
 	"github.com/wuchunfu/IpProxyPool/middleware/storage"
 	"github.com/wuchunfu/IpProxyPool/util/iputil"
-	"net/http"
-	"time"
 )
 
 // Run for request

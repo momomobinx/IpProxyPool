@@ -2,11 +2,12 @@ package config
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/fsnotify/fsnotify"
 	logger "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"github.com/wuchunfu/IpProxyPool/util/fileutil"
-	"os"
 )
 
 type System struct {

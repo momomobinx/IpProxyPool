@@ -3,9 +3,10 @@ package cmd
 import (
 	"errors"
 	"fmt"
+	"os"
+
 	"github.com/spf13/cobra"
 	"github.com/wuchunfu/IpProxyPool/cmd/server"
-	"os"
 )
 
 // rootCmd represents the base command when called without any subcommands

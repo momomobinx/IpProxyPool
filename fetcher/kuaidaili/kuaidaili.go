@@ -2,13 +2,14 @@ package kuaidaili
 
 import (
 	"fmt"
+	"strconv"
+	"strings"
+
 	"github.com/PuerkitoBio/goquery"
 	logger "github.com/sirupsen/logrus"
 	"github.com/wuchunfu/IpProxyPool/fetcher"
 	"github.com/wuchunfu/IpProxyPool/models/ipModel"
 	"github.com/wuchunfu/IpProxyPool/util"
-	"strconv"
-	"strings"
 )
 
 // 国内高匿代理

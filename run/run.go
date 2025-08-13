@@ -1,14 +1,15 @@
 package run
 
 import (
+	"sync"
+	"time"
+
 	logger "github.com/sirupsen/logrus"
 	"github.com/wuchunfu/IpProxyPool/fetcher/ip3366"
 	"github.com/wuchunfu/IpProxyPool/fetcher/ip66"
 	"github.com/wuchunfu/IpProxyPool/fetcher/ip89"
 	"github.com/wuchunfu/IpProxyPool/middleware/storage"
 	"github.com/wuchunfu/IpProxyPool/models/ipModel"
-	"sync"
-	"time"
 )
 
 func Task() {

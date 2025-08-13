@@ -3,17 +3,18 @@ package database
 import (
 	"database/sql"
 	"fmt"
+	"log"
+	"net/url"
+	"os"
+	"strings"
+	"time"
+
 	"github.com/sirupsen/logrus"
 	"github.com/wuchunfu/IpProxyPool/middleware/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
-	"log"
-	"net/url"
-	"os"
-	"strings"
-	"time"
 )
 
 var dbPingInterval = 90 * time.Second

@@ -1,13 +1,14 @@
 package main
 
 import (
+	"runtime"
+
 	"github.com/wuchunfu/IpProxyPool/api"
 	"github.com/wuchunfu/IpProxyPool/cmd"
 	"github.com/wuchunfu/IpProxyPool/middleware/config"
 	"github.com/wuchunfu/IpProxyPool/middleware/database"
 	"github.com/wuchunfu/IpProxyPool/middleware/logutil"
 	"github.com/wuchunfu/IpProxyPool/run"
-	"runtime"
 )
 
 func main() {
