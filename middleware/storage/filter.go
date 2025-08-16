@@ -3,6 +3,7 @@ package storage
 import (
 	"crypto/tls"
 	"fmt"
+	"io"
 	"net"
 	"net/http"
 	"net/url"
@@ -74,10 +75,15 @@ func CheckIp(ip *ipModel.IP) bool {
 		return false
 	}
 
-	defer res.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			logger.Error(err.Error())
+		}
+	}(res.Body)
 	if res.StatusCode == http.StatusOK {
 		// 判断是否成功访问，如果成功访问StatusCode应该为200
-		speed := time.Now().Sub(begin).Nanoseconds() / 1000 / 1000 //ms
+		speed := time.Since(begin).Milliseconds() // ms
 		ip.ProxySpeed = int(speed)
 		ipModel.UpdateIp(ip)
 		return true

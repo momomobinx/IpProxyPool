@@ -4,13 +4,12 @@ import (
 	"crypto/sha1"
 	"encoding/hex"
 	"io"
-	"io/ioutil"
+	"log"
 	"os"
 )
 
 // 判断所给路径是否为文件夹
-// IsDir returns true if given path is a dir,
-// or returns false when it's a directory or does not exist.
+// IsDir returns true if given path is a dir, or returns false when it's a directory or does not exist.
 func IsDir(filePath string) bool {
 	f, err := os.Stat(filePath)
 	if err != nil {
@@ -61,7 +60,15 @@ func ReadFile(path string) string {
 	if err != nil {
 		return ""
 	}
-	defer fi.Close()
-	fd, err := ioutil.ReadAll(fi)
+	defer func(fi *os.File) {
+		err := fi.Close()
+		if err != nil {
+			log.Println(err)
+		}
+	}(fi)
+	fd, err := io.ReadAll(fi)
+	if err != nil {
+		return ""
+	}
 	return string(fd)
 }

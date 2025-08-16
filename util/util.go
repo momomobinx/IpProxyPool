@@ -26,9 +26,9 @@ func RandomString(n int) string {
 	var letters = []byte("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
 	result := make([]byte, n)
 
-	rand.Seed(time.Now().Unix())
+	rng := rand.New(rand.NewSource(time.Now().Unix()))
 	for i := range result {
-		result[i] = letters[rand.Intn(len(letters))]
+		result[i] = letters[rng.Intn(len(letters))]
 	}
 	return string(result)
 }

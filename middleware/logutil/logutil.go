@@ -23,7 +23,7 @@ import (
 func InitLog(setting *config.Log) {
 	file, logFilePath := LogFile(setting.FilePath, setting.FileName)
 
-	mode := strings.Replace(strings.ToLower(setting.Mode), " ", "", -1)
+	mode := strings.ReplaceAll(strings.ToLower(setting.Mode), " ", "")
 	switch mode {
 	case "console":
 		logrus.SetFormatter(&logrus.JSONFormatter{
@@ -44,7 +44,7 @@ func InitLog(setting *config.Log) {
 	}
 
 	// 设置日志级别
-	level := strings.Replace(strings.ToLower(setting.Level), " ", "", -1)
+	level := strings.ReplaceAll(strings.ToLower(setting.Level), " ", "")
 	switch level {
 	// 如果日志级别不是debug就不要打印日志到控制台了
 	case "debug":

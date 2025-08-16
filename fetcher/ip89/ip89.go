@@ -15,7 +15,9 @@ import (
 func Ip89() []*ipModel.IP {
 	logger.Info("[89ip] fetch start")
 	defer func() {
-		recover()
+		if r := recover(); r != nil {
+			logger.Warnln("[89ip] fetch error")
+		}
 		logger.Warnln("[89ip] fetch error")
 	}()
 	list := make([]*ipModel.IP, 0)

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 
@@ -65,7 +66,10 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			return
 		}
-		w.Write(b)
+		if _, err := w.Write(b); err != nil {
+			log.Println(err)
+			return
+		}
 	}
 }
 
@@ -77,7 +81,10 @@ func ProxyAllHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			return
 		}
-		w.Write(b)
+		if _, err := w.Write(b); err != nil {
+			log.Println(err)
+			return
+		}
 	}
 }
 
@@ -89,7 +96,10 @@ func ProxyHttpHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			return
 		}
-		w.Write(b)
+		if _, err := w.Write(b); err != nil {
+			log.Println(err)
+			return
+		}
 	}
 }
 
@@ -101,6 +111,9 @@ func ProxyHttpsHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			return
 		}
-		w.Write(b)
+		if _, err := w.Write(b); err != nil {
+			log.Println(err)
+			return
+		}
 	}
 }

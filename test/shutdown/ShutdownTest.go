@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -55,20 +56,19 @@ func graceFullShutdown(server *http.Server, wg *sync.WaitGroup) {
 	quit := make(chan os.Signal, 1)
 	// 监听 Ctrl+C 信号
 	signal.Notify(quit, syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
-	select {
-	case <-quit:
-		wg.Add(1)
-		// 使用context控制 server.Shutdown 的超时时间
-		ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
-		defer cancel()
-		server.SetKeepAlivesEnabled(false)
-		errs := server.Shutdown(ctx)
-		if errs != nil {
-			logger.Info("Server Shutdown:", errs)
-			fmt.Println("Server Shutdown:", errs)
-		}
-		wg.Done()
+
+	<-quit
+	wg.Add(1)
+	// 使用context控制 server.Shutdown 的超时时间
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+	defer cancel()
+	server.SetKeepAlivesEnabled(false)
+	errs := server.Shutdown(ctx)
+	if errs != nil {
+		logger.Info("Server Shutdown:", errs)
+		fmt.Println("Server Shutdown:", errs)
 	}
+	wg.Done()
 }
 
 // HttpShutdownHandler .
@@ -76,6 +76,10 @@ func HttpShutdownHandler(w http.ResponseWriter, r *http.Request) {
 	time.Sleep(1 * time.Second)
 	if r.Method == "GET" {
 		w.Header().Set("content-type", "application/json")
-		w.Write([]byte("Hello world!"))
+		_, err := w.Write([]byte("Hello world!"))
+		if err != nil {
+			log.Println(err)
+			return
+		}
 	}
 }

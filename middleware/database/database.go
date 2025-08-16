@@ -71,7 +71,7 @@ func InitDB(setting *config.Database) *gorm.DB {
 
 func setLogLevel(logLevel string) logger.LogLevel {
 	// 设置日志级别
-	level := strings.Replace(strings.ToLower(logLevel), " ", "", -1)
+	level := strings.ReplaceAll(strings.ToLower(logLevel), " ", "")
 	switch level {
 	case "silent":
 		return logger.Silent

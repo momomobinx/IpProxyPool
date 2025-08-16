@@ -25,7 +25,9 @@ func Ip33662() []*ipModel.IP {
 func Ip3366(proxyType int) []*ipModel.IP {
 	logger.Info("[ip3366] fetch start")
 	defer func() {
-		recover()
+		if r := recover(); r != nil {
+			logger.Warnln("[ip3366] fetch error")
+		}
 		logger.Warnln("[ip3366] fetch error")
 	}()
 	list := make([]*ipModel.IP, 0)

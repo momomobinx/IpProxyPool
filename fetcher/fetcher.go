@@ -3,6 +3,7 @@ package fetcher
 import (
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/http/cookiejar"
 	"time"
@@ -37,7 +38,12 @@ func Fetch(url string) *goquery.Document {
 
 	resp, err := client.Do(req)
 	if resp != nil {
-		defer resp.Body.Close()
+		defer func(Body io.ReadCloser) {
+			err := Body.Close()
+			if err != nil {
+				log.Println(err)
+			}
+		}(resp.Body)
 	}
 	defer func() {
 		if err := recover(); err != nil {

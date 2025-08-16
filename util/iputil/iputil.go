@@ -2,7 +2,8 @@ package iputil
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
+	"log"
 	"net"
 	"net/http"
 	"os"
@@ -54,7 +55,7 @@ func GetLocalIP() (ip string, err error) {
 	return
 }
 
-//	获取客户ip地址
+// 获取客户ip地址
 func GetClientIp() string {
 	addrs, _ := net.InterfaceAddrs()
 
@@ -70,7 +71,7 @@ func GetClientIp() string {
 	return "Can not find the client ip address!"
 }
 
-//	获取服务端ip
+// 获取服务端ip
 func GetServerIP() string {
 	host, _ := os.Hostname()
 	addrs, _ := net.LookupIP(host)
@@ -109,8 +110,16 @@ func ClientPublicIP() string {
 	if err != nil {
 		return ""
 	}
-	defer resp.Body.Close()
-	content, _ := ioutil.ReadAll(resp.Body)
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			log.Println(err)
+		}
+	}(resp.Body)
+	content, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return ""
+	}
 	return string(content)
 }
 
