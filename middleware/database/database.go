@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/momomobinx/IpProxyPool/middleware/config"
 	"github.com/sirupsen/logrus"
-	"github.com/wuchunfu/IpProxyPool/middleware/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

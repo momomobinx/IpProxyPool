@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   lint:
-    if: github.repository == 'wuchunfu/IpProxyPool'
+    if: github.repository == 'momomobinx/IpProxyPool'
     name: Lint
     strategy:
       matrix:

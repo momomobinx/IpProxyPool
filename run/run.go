@@ -4,12 +4,12 @@ import (
 	"sync"
 	"time"
 
+	"github.com/momomobinx/IpProxyPool/fetcher/ip3366"
+	"github.com/momomobinx/IpProxyPool/fetcher/ip66"
+	"github.com/momomobinx/IpProxyPool/fetcher/ip89"
+	"github.com/momomobinx/IpProxyPool/middleware/storage"
+	"github.com/momomobinx/IpProxyPool/models/ipModel"
 	logger "github.com/sirupsen/logrus"
-	"github.com/wuchunfu/IpProxyPool/fetcher/ip3366"
-	"github.com/wuchunfu/IpProxyPool/fetcher/ip66"
-	"github.com/wuchunfu/IpProxyPool/fetcher/ip89"
-	"github.com/wuchunfu/IpProxyPool/middleware/storage"
-	"github.com/wuchunfu/IpProxyPool/models/ipModel"
 )
 
 func Task() {

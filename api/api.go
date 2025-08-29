@@ -8,10 +8,10 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/momomobinx/IpProxyPool/middleware/config"
+	"github.com/momomobinx/IpProxyPool/middleware/storage"
+	"github.com/momomobinx/IpProxyPool/util/iputil"
 	logger "github.com/sirupsen/logrus"
-	"github.com/wuchunfu/IpProxyPool/middleware/config"
-	"github.com/wuchunfu/IpProxyPool/middleware/storage"
-	"github.com/wuchunfu/IpProxyPool/util/iputil"
 )
 
 // Run for request
@@ -108,6 +108,21 @@ func ProxyHttpsHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		w.Header().Set("content-type", "application/json")
 		b, err := json.Marshal(storage.RandomByProxyType("https"))
+		if err != nil {
+			return
+		}
+		if _, err := w.Write(b); err != nil {
+			log.Println(err)
+			return
+		}
+	}
+}
+
+// ProxyHttpsHandler .
+func ProxySocksHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "GET" {
+		w.Header().Set("content-type", "application/json")
+		b, err := json.Marshal(storage.RandomByProxyType("socks"))
 		if err != nil {
 			return
 		}

@@ -6,10 +6,10 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/momomobinx/IpProxyPool/fetcher"
+	"github.com/momomobinx/IpProxyPool/models/ipModel"
+	"github.com/momomobinx/IpProxyPool/util"
 	logger "github.com/sirupsen/logrus"
-	"github.com/wuchunfu/IpProxyPool/fetcher"
-	"github.com/wuchunfu/IpProxyPool/models/ipModel"
-	"github.com/wuchunfu/IpProxyPool/util"
 )
 
 // 国内高匿代理

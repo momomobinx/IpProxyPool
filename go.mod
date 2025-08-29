@@ -1,4 +1,4 @@
-module github.com/wuchunfu/IpProxyPool
+module github.com/momomobinx/IpProxyPool
 
 go 1.25
 

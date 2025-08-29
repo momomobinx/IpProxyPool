@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/momomobinx/IpProxyPool/util/headerutil"
 	"github.com/sirupsen/logrus"
-	"github.com/wuchunfu/IpProxyPool/util/headerutil"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/net/publicsuffix"
 )

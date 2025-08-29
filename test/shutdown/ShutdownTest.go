@@ -11,8 +11,8 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/momomobinx/IpProxyPool/util/iputil"
 	logger "github.com/sirupsen/logrus"
-	"github.com/wuchunfu/IpProxyPool/util/iputil"
 )
 
 func main() {

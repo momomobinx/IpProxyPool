@@ -1,9 +1,9 @@
 package ipModel
 
 import (
+	"github.com/momomobinx/IpProxyPool/middleware/database"
+	"github.com/momomobinx/IpProxyPool/util"
 	logger "github.com/sirupsen/logrus"
-	"github.com/wuchunfu/IpProxyPool/middleware/database"
-	"github.com/wuchunfu/IpProxyPool/util"
 )
 
 // IP struct

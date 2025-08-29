@@ -34,3 +34,13 @@ log:
   # Can be "console" and "file", default is "console"
   # Use comma to separate multiple modes, e.g. "console, file"
   mode: file
+
+# 代理隧道相关配置
+tunnel:
+  ip: 0.0.0.0
+  #http隧道代理端口
+  httpTunnelPort: 8111
+  #socket隧道代理端口
+  socketTunnelPort: 8112
+  # 多少次请求更换一次代理
+  useCount: 5

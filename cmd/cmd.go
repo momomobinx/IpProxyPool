@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/momomobinx/IpProxyPool/cmd/server"
 	"github.com/spf13/cobra"
-	"github.com/wuchunfu/IpProxyPool/cmd/server"
 )
 
 // rootCmd represents the base command when called without any subcommands

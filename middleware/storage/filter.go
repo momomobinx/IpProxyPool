@@ -10,9 +10,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/momomobinx/IpProxyPool/models/ipModel"
+	"github.com/momomobinx/IpProxyPool/util/randomutil"
 	logger "github.com/sirupsen/logrus"
-	"github.com/wuchunfu/IpProxyPool/models/ipModel"
-	"github.com/wuchunfu/IpProxyPool/util/randomutil"
 	"golang.org/x/net/http2"
 )
 

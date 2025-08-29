@@ -5,9 +5,9 @@ import (
 	"os"
 
 	"github.com/fsnotify/fsnotify"
+	"github.com/momomobinx/IpProxyPool/util/fileutil"
 	logger "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-	"github.com/wuchunfu/IpProxyPool/util/fileutil"
 )
 
 type System struct {
@@ -39,10 +39,22 @@ type Log struct {
 	Mode     string `yaml:"mode"`
 }
 
+type Tunnel struct {
+	//
+	Ip string `yaml:"ip"`
+	// HTTP隧道代理端口
+	HttpTunnelPort string `yaml:"httpTunnelPort"`
+	// Socket隧道代理端口
+	SocketTunnelPort string `yaml:"socketTunnelPort"`
+	// 多少次请求更换一次代理
+	UseCount int `yaml:"useCount"`
+}
+
 type YamlSetting struct {
 	System   System   `yaml:"system"`
 	Database Database `yaml:"database"`
 	Log      Log      `yaml:"log"`
+	Tunnel   Tunnel   `yaml:"tunnel"`
 }
 
 var (
